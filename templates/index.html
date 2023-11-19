@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+       <title>Health Literacy Test</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+         <div class="ml-container" style="display: block;">
+		<a href="https://github.com/wkaandemir" target="_blank" class="github-corner" title="View source on GitHub">
+		      <svg data-toggle="tooltip"
+		      data-placement="left" width="80" height="80" viewBox="0 0 250 250"
+			style="fill:#e50914; color:#fff; position: fixed;z-index:100; top: 0; border: 0; right: 0;" aria-hidden="true">
+			<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+			<path
+			  d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+			  fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+			<path
+			  d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+			  fill="currentColor" class="octo-body"></path>
+		      </svg>
+		    </a>
+        <!-- Website Title -->
+    	<div class="container">
+            <h2 class='container-heading'><span class='heading_first'>Health Literacy</span></h2>
+            <div class='description'>
+    			<p>Machine Learning Web Application</p>
+    		</div>
+    	</div>
+
+        <!-- Prediction Area -->
+        <div class="prediction-area">
+
+          
+
+            <!-- Prediction Form -->
+            <div class='div'>
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <div class="form-group">
+                        <div class="text">
+                            <label for="age"> - Age - </label>
+                        </div>
+                            <input type="number" class="form-input" id="age" name="age" required>
+                        </div>
+                    <div class="form-group">
+                        <label for="gender"></label>
+                        <select class="form-input" id="gender" name="gender" required>
+                            <option disabled selected value> - Gender - </option>
+                            <option value="1">Woman</option>
+                            <option value="2">Man</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="classs"></label>
+                        <select class="form-input" id="classs" name="classs" required>
+                            <option disabled selected value> - Which Class ? - </option>
+                            <option value="1">1st Class</option>
+                            <option value="2">2nd Class</option>
+                            <option value="3">3rd Class</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mother"></label>
+                        <select class="form-input" id="mother" name="mother" required>
+                            <option disabled selected value> - What is the Educational Status of the Mother? - </option>
+                            <option value="1">Not educated</option>
+                            <option value="2">Educated</option>
+                            <option value="3">Primary School</option>
+                            <option value="4">Middle School</option>
+                            <option value="5">High School</option>
+                            <option value="6">University and above</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="father"></label>
+                        <select class="form-input" id="father" name="father" required>
+                            <option disabled selected value> - Father's Education Level - </option>
+                            <option value="1">Not educated</option>
+                            <option value="2">Educated</option>
+                            <option value="3">Primary School</option>
+                            <option value="4">Middle School</option>
+                            <option value="5">High School</option>
+                            <option value="6">University and above</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="live"></label>
+                        <select class="form-input" id="live" name="live" required>
+                            <option disabled selected value> - Who do you live with? - </option>
+                            <option value="1">With Family</option>
+                            <option value="2">With Friends</option>
+                            <option value="3">Alone</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="news"></label>
+                        <select class="form-input" id="news" name="news" required>
+                            <option disabled selected value> - How many days a week do you read newspapers? - </option>
+                            <option value="0">Never</option>
+                            <option value="1">1 Day</option>
+                            <option value="2">2 Days</option>
+                            <option value="3">3 Days</option>
+                            <option value="4">4 Days</option>
+                            <option value="5">5 Days</option>
+                            <option value="6">6 Days</option>
+                            <option value="7">7 Days</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="health"></label>
+                        <select class="form-input" id="health" name="health" required>
+                            <option disabled selected value> - Does health expenses cover? - </option>
+                            <option value="1">Very Easy</option>
+                            <option value="2">Partly</option>
+                            <option value="3">Very Difficult</option>
+                            <option value="4">No Answer / Don't Know</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="economy"></label>
+                        <select class="form-input" id="economy" name="economy" required>
+                            <option disabled selected value> - Economic Situation - </option>
+                            <option value="1">Poor</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Good</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="myButton" value="Health Literacy" required>
+                </form>
+            </div>
+
+            </div>
+        </div>
+
+    </body>
+        <!-- Footer -->
+       <div class='footer'>
+           <div class="contact">             
+               <a target="_blank" href="https://www.linkedin.com/in/wkaandemir"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+               <a target="_blank" href="https://github.com/wkaandemir"><i class="fab fa-github fa-lg contact-icon"></i></a>
+           </div>
+           <!--   <p class='footer-description'>Made with ❤️ by WKD</p>    -->
+       </div>
+
+</html>
